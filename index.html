@@ -33,11 +33,10 @@
             margin-bottom: 8px;
         }
         .logo-img {
-            /* Disesuaikan untuk 80mm, dibuat sedikit lebih besar */
             max-width: 25mm; 
             max-height: 25mm;
             object-fit: contain;
-            filter: grayscale(100%) contrast(120%); /* Hitam Putih agar tajam */
+            filter: grayscale(100%) contrast(120%);
         }
 
         /* --- HEADER TEXTS --- */
@@ -74,7 +73,7 @@
             padding: 5px 0;
         }
         .phone-icon::before {
-            content: "\260E"; /* Ikon telepon Unicode */
+            content: "\260E";
             margin-right: 4px;
         }
 
@@ -104,8 +103,34 @@
             border-top: 1px solid #000;
         }
 
-        /* --- FOOTER --- */
-        .footer-info {
+        /* --- FOOTER BARU (Pembayaran) --- */
+        .payment-info-container {
+            margin-top: 15px;
+            display: flex; /* Untuk menempatkan QR dan Teks bersebelahan */
+            align-items: top;
+            justify-content: space-between;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            padding-bottom: 10px;
+        }
+        .qr-code {
+            max-width: 30mm; /* Atur ukuran QR agar sesuai dengan 80mm */
+            height: auto;
+            object-fit: contain;
+            margin-right: 5px;
+        }
+        .payment-details {
+            text-align: left;
+            flex-grow: 1;
+        }
+        .payment-details p {
+            margin: 0 0 2px 0;
+            line-height: 1.2;
+        }
+
+        /* --- INFO THANK YOU --- */
+        .thank-you {
+            font-family: Calibri, sans-serif;
             margin-top: 10px;
             font-size: 11px;
         }
@@ -184,11 +209,25 @@
 
         <div class="dashed"></div>
 
-        <div class="center footer-info">            
+        <div class="payment-info-container">
+            <img src="https://raw.githubusercontent.com/dukunexcel/Korcam/main/qrwamh.png" alt="QR Code Pembayaran" class="qr-code">
+            
+            <div class="payment-details">
+                <p class="bold">Pembayaran Transfer:</p>
+                <p>BANK BRI : (002)</p>
+                <p>No. Rek : 0016-0104-6020-532</p>
+                <p>a.n. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: MOHAMMAD HAFIDH</p>
+                <p>HP / WA &nbsp;: 0896-0898-6635</p>
+            </div>
+        </div>
+
+        <div class="dashed"></div>
+
+        <div class="center thank-you">            
             <div class="bold" style="font-size: 12px;">TERIMA KASIH</div>
             <div style="font-size: 9px; margin-top: 2px;">Simpan struk ini sebagai bukti pembayaran</div>
         </div>
-    </div>
+        </div>
 
     <script>
         // Fungsi Ambil Parameter URL
@@ -217,4 +256,3 @@
     </script>
 </body>
 </html>
-
