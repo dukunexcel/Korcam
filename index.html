@@ -114,8 +114,8 @@
             padding-bottom: 10px;
         }
         .qr-code {
-            max-width: 30mm; /* Atur ukuran QR agar sesuai dengan 80mm */
-            height: auto;
+            max-width: 20mm; /* Atur ukuran QR agar sesuai dengan 80mm */
+            max-height: 20mm;
             object-fit: contain;
             margin-right: 5px;
         }
@@ -171,7 +171,6 @@
         </div>
 
         <div class="line-divider"></div>
-        <div class="dashed"></div>
 
         <table class="info-table">
             <tr>
@@ -190,7 +189,6 @@
             Memuat item...
         </div>
 
-        <div class="dashed"></div>
 
         <table class="total-table">
             <tr class="total-row">
@@ -208,6 +206,12 @@
         </table>
 
         <div class="dashed"></div>
+                <div class="center thank-you">            
+            <div class="bold" style="font-size: 12px;">TERIMA KASIH</div>
+            <div style="font-size: 9px; margin-top: 2px;">Simpan struk ini sebagai bukti pembayaran</div>
+        </div>
+        
+        <div class="dashed"></div>
 
         <div class="payment-info-container">
             <img src="https://raw.githubusercontent.com/dukunexcel/Korcam/main/qrwamh.png" alt="QR Code Pembayaran" class="qr-code">
@@ -221,12 +225,6 @@
             </div>
         </div>
 
-        <div class="dashed"></div>
-
-        <div class="center thank-you">            
-            <div class="bold" style="font-size: 12px;">TERIMA KASIH</div>
-            <div style="font-size: 9px; margin-top: 2px;">Simpan struk ini sebagai bukti pembayaran</div>
-        </div>
         </div>
 
     <script>
@@ -256,3 +254,4 @@
     </script>
 </body>
 </html>
+
