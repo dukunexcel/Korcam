@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Struk Lentera Coffee Sederhana</title>
+    <title>Struk Metode Qiroati (Final)</title>
     <style>
         /* --- RESET & BASIC STYLE --- */
         * { box-sizing: border-box; }
         body {
-            font-family: 'Courier New', Courier, monospace; /* Font Struk */
-            font-size: 12px;
-            width: 58mm; /* Lebar Kertas Thermal 58mm */
+            /* Lebar Kertas Thermal 80mm */
+            width: 80mm; 
             margin: 0;
-            padding: 10px 5px; /* Padding aman agar tidak terpotong */
+            padding: 10px 8px; /* Padding disesuaikan untuk 80mm */
             color: #000;
             background-color: #fff;
         }
+
+        /* --- FONT DEFINITION --- */
+        body { font-family: Calibri, sans-serif; font-size: 14px; } 
+        .header-title { font-family: Bodoni, 'Times New Roman', serif; } 
+        .contact-info { font-family: 'Comic Sans MS', cursive; font-size: 13px; }
 
         /* --- LAYOUT HELPERS --- */
         .container { width: 100%; }
@@ -23,27 +27,58 @@
         .right { text-align: right; }
         .bold { font-weight: bold; }
         
-        /* --- HEADER LOGO & TEXT --- */
+        /* --- HEADER LOGO --- */
         .logo-container {
             text-align: center;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         .logo-img {
-            max-width: 15mm; /* Lebar maksimal logo agar pas */
-            max-height: 15mm;
+            /* Disesuaikan untuk 80mm, dibuat sedikit lebih besar */
+            max-width: 25mm; 
+            max-height: 25mm;
             object-fit: contain;
-            filter: grayscale(100%) contrast(120%); /* Ubah jadi Hitam Putam agar tajam diprint */
+            filter: grayscale(100%) contrast(120%); /* Hitam Putih agar tajam */
+        }
+
+        /* --- HEADER TEXTS --- */
+        .header-top {
+            font-size: 15px; 
+            font-weight: normal;
+            margin-bottom: 5px;
         }
         .header-title {
-            font-size: 16px;
-            font-weight: 800;
+            font-size: 28px; 
+            font-weight: bold;
+            letter-spacing: 1px;
             margin-top: 5px;
-            margin-bottom: 2px;
-            text-transform: uppercase;
+            margin-bottom: 5px;
         }
-        .header-info { font-size: 10px; }
+        .header-branch {
+            font-size: 15px;
+            font-weight: normal;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        
+        /* --- GARIS PEMISAH KHUSUS HEADER --- */
+        .line-divider {
+            border-top: 2px solid #000;
+            margin: 5px 0;
+            width: 100%;
+            display: block;
+        }
 
-        /* --- GARIS PEMISAH --- */
+        /* --- KONTAK & ALAMAT --- */
+        .contact-info {
+            line-height: 1.5;
+            padding: 5px 0;
+        }
+        .phone-icon::before {
+            content: "\260E"; /* Ikon telepon Unicode */
+            margin-right: 4px;
+        }
+
+        /* --- GARIS PEMISAH UMUM --- */
         .dashed {
             border-top: 1px dashed #000;
             margin: 8px 0;
@@ -53,25 +88,20 @@
 
         /* --- TABEL DATA --- */
         table { width: 100%; border-collapse: collapse; }
-        
-        /* Info Transaksi */
-        .info-table { font-size: 11px; margin-bottom: 5px; }
-        
-        /* Daftar Item */
+        .info-table { font-size: 13px; margin-bottom: 5px; }
         .item-list {
-            width: 100%;
-            white-space: pre-wrap; /* Agar enter/spasi dari AppSheet terbaca */
-            font-size: 12px;
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 13px;
+            white-space: pre-wrap;
             line-height: 1.3;
         }
 
-        /* Bagian Total */
-        .total-table { font-size: 12px; }
+        .total-table { font-size: 13px; }
         .total-row td { 
             font-weight: bold; 
-            font-size: 14px; 
+            font-size: 15px; 
             padding-top: 5px;
-            border-top: 1px solid #000; /* Garis lurus untuk total */
+            border-top: 1px solid #000;
         }
 
         /* --- FOOTER --- */
@@ -103,10 +133,19 @@
         <div class="logo-container">
             <img src="https://raw.githubusercontent.com/dukunexcel/Korcam/main/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
         </div>
-
-        <div class="center header-title" id="toko">LENTERA COFFEE</div>
-        <div class="center header-info" id="alamat">Jl. Raya Demak</div>
         
+        <div class="center header-top">KOORDINATOR PENDIDIKAN AL-QUR'AN</div>
+        <div class="center header-title">METODE QIROATI</div>
+        <div class="center header-branch">CABANG DEMAK</div>
+        
+        <div class="line-divider"></div>
+
+        <div class="center contact-info">
+            <span id="alamat">Jl. Sunan Kalijaga 35 Betengan Demak</span> 
+            <span class="phone-icon"></span><span id="telp">0896-0898-6635</span>
+        </div>
+
+        <div class="line-divider"></div>
         <div class="dashed"></div>
 
         <table class="info-table">
@@ -157,23 +196,19 @@
             return new URLSearchParams(window.location.search).get(name) || '';
         }
 
-        // 1. Header
-        document.getElementById('toko').innerText = getParam('toko') || 'LENTERA COFFEE';
-        document.getElementById('alamat').innerText = getParam('alamat');
-        
-        // 2. Info Transaksi
+        // 1. Info Transaksi
         document.getElementById('no').innerText = getParam('no');
         document.getElementById('tgl').innerText = getParam('tgl');
 
-        // 3. Items (Penting: innerText agar spasi terjaga)
+        // 2. Items
         document.getElementById('items').innerText = getParam('item');
 
-        // 4. Totals
+        // 3. Totals
         document.getElementById('total').innerText = getParam('total');
         document.getElementById('bayar').innerText = getParam('bayar');
         document.getElementById('kembali').innerText = getParam('kembali');
 
-        // 5. Auto Print (Jeda 1 detik agar gambar logo termuat dulu)
+        // 4. Auto Print (Jeda 1 detik agar gambar logo termuat dulu)
         window.onload = function() {
             setTimeout(() => {
                 window.print();
@@ -181,5 +216,4 @@
         }
     </script>
 </body>
-
 </html>
